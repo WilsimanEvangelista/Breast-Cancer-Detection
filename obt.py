@@ -14,7 +14,6 @@ def allowed_file(filename):
 def upload_file():
     print("Request Method:", request.method)
     print("Request Headers:", request.headers)
-    print("Request Form:", request.form)
     print("Request Files:", request.files)
     
     if not request.files:
