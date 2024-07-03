@@ -28,7 +28,7 @@ def upload_file():
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             return jsonify({"message": "File uploaded successfully"}), 200
 
-    return jsonify({"error": "No valid files"}), 400
+    return jsonify({"error": "No valid files"}), 401
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
