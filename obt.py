@@ -12,10 +12,12 @@ def allowed_file(filename):
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    print(request.files)
     if not request.files:
         return jsonify({"error": "No files part"}), 400
 
     for file in request.files.values():
+        print(file)
         if file.filename == '':
             continue
         if allowed_file(file.filename):
