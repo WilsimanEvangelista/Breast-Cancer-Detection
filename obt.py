@@ -12,19 +12,18 @@ def allowed_file(filename):
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    if 'file' not in request.files:
-        return jsonify({"error": "No file part"}), 400
-    
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({"error": "No selected file"}), 401
-    
-    if file and allowed_file(file.filename):
-        filename = file.filename
-        file.save(os.path.join(UPLOAD_FOLDER, filename))
-        return jsonify({"message": "File uploaded successfully"}), 200
-    
-    return jsonify({"error": "Invalid file format"}), 402
+    if not request.files:
+        return jsonify({"error": "No files part"}), 400
+
+    for file in request.files.values():
+        if file.filename == '':
+            continue
+        if allowed_file(file.filename):
+            filename = file.filename
+            file.save(os.path.join(UPLOAD_FOLDER, filename))
+            return jsonify({"message": "File uploaded successfully"}), 200
+
+    return jsonify({"error": "No valid files"}), 400
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
