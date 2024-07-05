@@ -12,7 +12,7 @@ def upload_file():
             return 0
         else:
             print(a,b)
-            return f"OK - {a} {b}", 200
+            return f"OK - {a} {b.__dict__}", 200
 
     except Exception as e:
         print("AAAAAAAAAAAAAA")
