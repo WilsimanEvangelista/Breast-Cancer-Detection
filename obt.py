@@ -1,33 +1,23 @@
 from flask import Flask, request, jsonify
-import os
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'images'
-ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png'}
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    print("Request Method:", request.method)
-    print("Request Headers:", request.headers)
-    print("Request Files:", request.files)
-    
-    if not request.files:
-        return jsonify({"error": "No files part"}), 400
+    try:
+        # Obtém o corpo da requisição como uma string
+        image_base64 = request.data.decode('utf-8')
 
-    for file in request.files.values():
-        if file.filename == '':
-            continue
-        if allowed_file(file.filename):
-            filename = file.filename
-            file.save(os.path.join(UPLOAD_FOLDER, filename))
-            return jsonify({"message": "File uploaded successfully"}), 200
+        if not image_base64:
+            return jsonify({"error": "No data found"}), 400
 
-    return jsonify({"error": "No valid files"}), 401
+        # Imprime a string recebida
+        print(f"Received data: {image_base64}")
+
+        return "OK", 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
