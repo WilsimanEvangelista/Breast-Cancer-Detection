@@ -5,17 +5,15 @@ app = Flask(__name__)
 @app.route('/upload', methods=['POST'])
 def upload_file():
     try:
-        a = request.data
         b = request.values
         if a == 0:
-            print("MERDA")
+            print("AAAAAAAAAAA")
             return 0
         else:
-            print(a,b)
-            return f"OK - {a} {b.__dict__}", 200
+            return f"{b}", 200
 
     except Exception as e:
-        print("AAAAAAAAAAAAAA")
+        print("ehh")
         return jsonify({"error": str(e)}), 401
 
 if __name__ == "__main__":
