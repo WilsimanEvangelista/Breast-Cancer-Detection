@@ -5,6 +5,8 @@ app = Flask(__name__)
 @app.route('/upload', methods=['POST'])
 def upload_file():
     try:
+        a = request.data
+        print(a)
         image_base64 = request.data.decode('utf-8')
         print(image_base64)
         if not image_base64:
