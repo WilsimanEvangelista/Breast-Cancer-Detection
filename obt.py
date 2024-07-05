@@ -15,7 +15,6 @@ def upload_file():
             return c[0][0], 200
 
     except Exception as e:
-        print("ehh")
         return jsonify({"error": str(e)}), 401
 
 if __name__ == "__main__":
