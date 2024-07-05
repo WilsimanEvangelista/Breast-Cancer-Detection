@@ -6,12 +6,13 @@ app = Flask(__name__)
 def upload_file():
     try:
         a = request.data
+        b = request.values
         if a == 0:
             print("MERDA")
             return 0
         else:
-            print(a)
-            return f"OK - {a}", 200
+            print(a,b)
+            return f"OK - {a} {b}", 200
 
     except Exception as e:
         print("AAAAAAAAAAAAAA")
