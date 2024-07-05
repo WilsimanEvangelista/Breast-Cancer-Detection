@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route('/upload', methods=['POST'])
 def upload_file():
     try:
-        b = request.values
+        a = request.values
         if a == 0:
             print("AAAAAAAAAAA")
             return 0
