@@ -11,7 +11,8 @@ def upload_file():
             return 0
         else:
             c = list(a.lists())
-            return f"{a}\n\n\n{c[0][0]}", 200
+            print(c[0][0])
+            return c[0][0], 200
 
     except Exception as e:
         print("ehh")
