@@ -10,7 +10,7 @@ def upload_file():
             print("AAAAAAAAAAA")
             return 0
         else:
-            return f"{b}", 200
+            return f"{a}", 200
 
     except Exception as e:
         print("ehh")
