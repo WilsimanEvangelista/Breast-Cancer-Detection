@@ -6,7 +6,7 @@ app = Flask(__name__)
 def upload_file():
     try:
         image_base64 = request.data.decode('utf-8')
-        print(image)
+        print(image_base64)
         if not image_base64:
             return jsonify({"error": "No data found"}), 400
 
