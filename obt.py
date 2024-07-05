@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/upload', methods=['POST'])
+@app.route('/upload', methods=['POST', 'GET'])
 def upload_file():
     try:
         # Obtém o corpo da requisição como uma string
@@ -17,7 +17,7 @@ def upload_file():
         return "OK", 200
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 400
+        return jsonify({"error": str(e)}), 401
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
