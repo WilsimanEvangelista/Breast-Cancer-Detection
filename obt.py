@@ -4,12 +4,11 @@ app = Flask(__name__)
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    print(request)
+    print(request.data)
+    image_base64 = request.data.decode('utf-8')
+    print(image_base64)
     try:
-        # Obtém o corpo da requisição como uma string
-        print(request)
-        print(request.data)
-        image_base64 = request.data.decode('utf-8')
-        print(image_base64)
 
         if not image_base64:
             return jsonify({"error": "No data found"}), 400
