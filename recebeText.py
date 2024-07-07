@@ -4,11 +4,12 @@ app = Flask(__name__)
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    print(request.headers)
+    print(request.max_content_length)
+    print(request.get_data())
+    print(request.content_encoding)
     try:
         a = request.values
-        print(a)
-        print(request.headers)
-        print(request.max_content_length)
         if a == 0:
             print("AAAAAAAAAAA")
             return 0
