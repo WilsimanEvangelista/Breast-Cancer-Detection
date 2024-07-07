@@ -24,7 +24,7 @@ def authenticate():
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
                 'credentials.json', SCOPES)
-            creds = flow.run_local_server(port=0)
+            creds = flow.run_local_server(host="18.117.182.107",port=5000,open_browser=True)
         # Salva as credenciais para a próxima execução
         with open('token.json', 'w') as token:
             token.write(creds.to_json())
