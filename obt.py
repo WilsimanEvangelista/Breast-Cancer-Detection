@@ -5,15 +5,15 @@ app = Flask(__name__)
 @app.route('/upload', methods=['POST'])
 def upload_file():
     try:
-        a = request.values
-        if a == 0:
-            print("AAAAAAAAAAA")
-            return 0
+        print(request.files)
+        uploaded_file = request.files['file']  # Assuming the file is uploaded with the key 'file'
+        if uploaded_file.filename != '':
+            file_content = uploaded_file.read().decode('utf-8')
+            print("Conteúdo do arquivo:")
+            print(file_content)
+            return "Conteúdo do arquivo impresso no console.", 200
         else:
-            c = list(a.lists())
-            print(c)
-            print(c[0][0])
-            return c[0][0], 200
+            return "Nenhum arquivo foi enviado.", 400
 
     except Exception as e:
         return jsonify({"error": str(e)}), 401
