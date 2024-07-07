@@ -5,6 +5,7 @@ app = Flask(__name__)
 @app.route('/upload', methods=['POST'])
 def upload_file():
     try:
+        print(request.headers)
         print(request.files)
         uploaded_file = request.files['file']  # Assuming the file is uploaded with the key 'file'
         if uploaded_file.filename != '':
