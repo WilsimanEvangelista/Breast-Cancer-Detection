@@ -11,6 +11,7 @@ def upload_file():
             return 0
         else:
             c = list(a.lists())
+            print(c)
             print(c[0][0])
             return c[0][0], 200
 
