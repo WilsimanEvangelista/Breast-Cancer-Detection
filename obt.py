@@ -20,13 +20,8 @@ def upload_file():
             print("AAAAAAAAAAA")
             return 0
         else:
-            
-            print(a)
             c = list(a.lists())
-            print(c)
-            print(c[0][0])
-            main()
-            return c[0][0], 200
+            return c, 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 401
