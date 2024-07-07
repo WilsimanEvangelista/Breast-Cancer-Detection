@@ -7,7 +7,7 @@ def upload_file():
     try:
         print(request.headers)
         print(request.files)
-        uploaded_file = request.files['file']  # Assuming the file is uploaded with the key 'file'
+        uploaded_file = request.files  # Assuming the file is uploaded with the key 'file'
         if uploaded_file.filename != '':
             file_content = uploaded_file.read().decode('utf-8')
             print("Conteúdo do arquivo:")
