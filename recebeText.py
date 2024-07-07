@@ -6,6 +6,9 @@ app = Flask(__name__)
 def upload_file():
     try:
         a = request.values
+        print(a)
+        print(request.headers)
+        print(request.max_content_length)
         if a == 0:
             print("AAAAAAAAAAA")
             return 0
@@ -13,8 +16,8 @@ def upload_file():
             print(a)
             c = list(a.lists())
             print(c)
-            print(c[0][0])
-            return c[0][0], 200
+            print(c[0][0].decode('utf-8'))
+            return c[0][0].decode('utf-8'), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 401
