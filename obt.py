@@ -1,15 +1,6 @@
 from flask import Flask, request, jsonify
-from download_images import authenticate, download_specific_photos
+from download_images import main
 
-'''def main(file_names: list) -> None: #file_names is a list that must contain 4 images 
-    folder_id = '1tY0nf5JzeScSieaa4DX8GDjAQ_i59xms'
-    local_folder = 'downloads'
-    
-    service = authenticate()
-    download_specific_photos(service, folder_id, file_names, local_folder)
-    print("Downloads concluídos!")
-
-'''
 app = Flask(__name__)
 
 @app.route('/upload', methods=['POST'])

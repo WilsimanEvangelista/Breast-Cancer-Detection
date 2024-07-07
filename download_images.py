@@ -64,3 +64,12 @@ def download_specific_photos(service, folder_id, file_names, local_folder):
                 downloaded_count += 1
     
     print(f"\nTotal de fotos baixadas: {downloaded_count}")
+
+
+def main(file_names: list) -> None: #file_names is a list that must contain 4 images 
+    folder_id = '1tY0nf5JzeScSieaa4DX8GDjAQ_i59xms'
+    local_folder = 'downloads'
+    
+    service = authenticate()
+    download_specific_photos(service, folder_id, file_names, local_folder)
+    print("Downloads concluídos!")
