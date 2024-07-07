@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-#from download_images import authenticate, download_specific_photos
+from download_images import authenticate, download_specific_photos
 
 '''def main(file_names: list) -> None: #file_names is a list that must contain 4 images 
     folder_id = '1tY0nf5JzeScSieaa4DX8GDjAQ_i59xms'
