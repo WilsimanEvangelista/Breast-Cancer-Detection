@@ -21,6 +21,7 @@ def upload_file():
             for i in json.loads(list_Images):
                 new_list_images.append(i.replace("\"","\'"))
             
+            
             main(file_names=new_list_images)
 
             return "Ok", 200
