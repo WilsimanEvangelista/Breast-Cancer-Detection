@@ -12,7 +12,7 @@ def upload_file():
             return 0
         else:
             c = list(a.lists())
-            return list(c[0][0]), 200
+            return c[0][0], 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 401
