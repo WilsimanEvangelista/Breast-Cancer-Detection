@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
 from download_images import main
+import json
+
 
 app = Flask(__name__)
 
@@ -20,13 +22,13 @@ def upload_file():
             list_Images = combinedMultiDict_To_Lists[0][0]
             print(list_Images)
             
-            for i in list_Images:
+            for i in json.loads(list_Images):
                 new_list_images.append(i.replace("\"","\'"))
             print(new_list_images)
 
             images_Download = main(file_names=new_list_images)
             print(images_Download)
-            
+
             return list_Images,images_Download, 200
 
     except Exception as e:
