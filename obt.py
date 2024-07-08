@@ -11,8 +11,10 @@ def upload_file():
             print("AAAAAAAAAAA")
             return 0
         else:
-            c = list(a.lists())
-            return c[0][0], 200
+            combinedMultiDict_To_Lists = list(a.lists())
+            list_Images = combinedMultiDict_To_Lists[0][0]
+            images_Download = main(file_names=list_Images)
+            return images_Download, 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 401

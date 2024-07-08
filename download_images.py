@@ -68,9 +68,9 @@ def download_specific_photos(service, folder_id, file_names, local_folder):
 
 def main(file_names: list):
     folder_id = '1tY0nf5JzeScSieaa4DX8GDjAQ_i59xms'  # Substitua pelo ID da pasta
-    #file_names = ['07/07/2024 04:04:08 PM_Img.jpg', '07/07/2024 04:04:01 PM_Img.jpg', '07/07/2024 02:42:14 PM_Img.jpg', '07/07/2024 02:21:20 PM_Img.jpg']
     local_folder = 'downloads'
     
     service = authenticate()
     download_specific_photos(service, folder_id, file_names, local_folder)
     print("Downloads concluídos!")
+    return "FOOOOOOOOIIIIIIIIIII"
