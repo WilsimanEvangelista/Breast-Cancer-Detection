@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
-from download_images import main
+from download_images import start_download_images
+from upload_images import start_upload_images_to_drive
 import json
 
 
@@ -21,8 +22,12 @@ def upload_file():
             for i in json.loads(list_Images):
                 new_list_images.append(i.replace("\"","\'"))
             
-            
-            main(file_names=new_list_images)
+            list_new_name_images = start_download_images(file_names=new_list_images) # Faz download das imagens e retorna o nome das imagens de forma sanitizada
+
+            # PROCESSA IMAGEM
+
+            start_upload_images_to_drive(list_new_name_images) # Faz upload das imagens processadas para o drive
+
 
             return "Ok", 200
 

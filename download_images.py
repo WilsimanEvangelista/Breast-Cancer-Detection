@@ -39,6 +39,7 @@ def download_specific_photos(service, folder_id, file_names, local_folder):
     """Baixa fotos específicas de uma pasta do Google Drive"""
     os.makedirs(local_folder, exist_ok=True)
     
+    list_new_name_images = []
     downloaded_count = 0
     
     for file_name in file_names:
@@ -52,6 +53,9 @@ def download_specific_photos(service, folder_id, file_names, local_folder):
             for item in items:
                 print(f"Baixando {item['name']}...")
                 sanitized_name = sanitize_filename(item['name'])
+
+                list_new_name_images.append(sanitize_filename)
+                
                 request = service.files().get_media(fileId=item['id'])
                 file_path = os.path.join(local_folder, sanitized_name)
                 with io.FileIO(file_path, 'wb') as fh:
@@ -64,13 +68,14 @@ def download_specific_photos(service, folder_id, file_names, local_folder):
                 downloaded_count += 1
     
     print(f"\nTotal de fotos baixadas: {downloaded_count}")
+    return list_new_name_images
 
 
-def main(file_names: list):
+def start_download_images(file_names: list):
     folder_id = '1tY0nf5JzeScSieaa4DX8GDjAQ_i59xms'  # Substitua pelo ID da pasta
     local_folder = 'downloads'
     
     service = authenticate()
-    download_specific_photos(service, folder_id, file_names, local_folder)
+    list_new_name_images = download_specific_photos(service, folder_id, file_names, local_folder)
     print("Downloads concluídos!")
-    return "FOOOOOOOOIIIIIIIIIII"
+    return list_new_name_images
