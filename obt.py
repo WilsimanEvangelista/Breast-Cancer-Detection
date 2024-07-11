@@ -26,7 +26,11 @@ def upload_file():
                 new_list_images.append(i.replace("\"","\'"))
             
             list_new_name_images = start_download_images(file_names=new_list_images) # Faz download das imagens e retorna o nome das imagens de forma sanitizada
+            '''
+            img = 'downloads/tem.png'
+            run_h5(img)
 
+            
             # PROCESSA IMAGEM
             cancer = 0
             pred_cancer = 0
@@ -39,7 +43,7 @@ def upload_file():
                 img = f'downloads/{i}'
                 run_h5(img)
                 print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-                list_img_process.append(img_process)
+                #list_img_process.append(img_process)
                 
                 if diag == "Tumor Maligno":
                     cancer += 1
@@ -55,10 +59,10 @@ def upload_file():
                 diag_final = f'Tumor Benigno com {pred_n_cancer/n_cancer*100} de certeza.'
             else:
                 diag_final = f'Tumor Maligno com {pred_cancer/cancer*100} de certeza.'
+            '''
+            #start_upload_images_to_drive(list_img_process) # Faz upload das imagens processadas para o drive
 
-            start_upload_images_to_drive(list_img_process) # Faz upload das imagens processadas para o drive
-
-            return diag_final, 200
+            return 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 401
