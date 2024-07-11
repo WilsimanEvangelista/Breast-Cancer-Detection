@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from download_images import start_download_images
 from upload_images import start_upload_images_to_drive
 import json
-from run_h5file import run_h5
+from .run_h5file import run_h5
 from gradCam import generate_cam
 
 
@@ -36,7 +36,7 @@ def upload_file():
             
             for i in list_new_name_images:
                 print(f'downloads/{i}')
-                pred, diag = run_h5(image_path=i)
+                run_h5(i)
                 print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
                 list_img_process.append(img_process)
                 
