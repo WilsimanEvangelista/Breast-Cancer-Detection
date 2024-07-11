@@ -35,9 +35,9 @@ def upload_file():
             list_img_process = []
             
             for i in list_new_name_images:
+                print(i)
                 pred, diag = run_h5(image_path=i)
-                img_process = generate_cam(image_path=i)
-                
+                print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
                 list_img_process.append(img_process)
                 
                 if diag == "Tumor Maligno":
