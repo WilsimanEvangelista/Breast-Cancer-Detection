@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from download_images import start_download_images
-from upload_images import start_upload_images_to_drive
+from .download_images import start_download_images
+from .upload_images import start_upload_images_to_drive
 import json
 from .run_h5file import run_h5
 from gradCam import generate_cam
