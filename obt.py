@@ -35,7 +35,7 @@ def upload_file():
             list_img_process = []
             
             for i in list_new_name_images:
-                print(i)
+                print(f'downloads/{i}')
                 pred, diag = run_h5(image_path=i)
                 print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
                 list_img_process.append(img_process)
