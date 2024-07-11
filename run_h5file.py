@@ -23,3 +23,6 @@ def run_h5(image_path: str) -> (float, str):
     else:
         print(pred, "Tumor Benigno")
         return pred, "Tumor Benigno"
+    
+if __name__ == "__main__":
+    run_h5('tem.png')
