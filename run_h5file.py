@@ -1,7 +1,7 @@
-import cv2
-import numpy as np
-from PIL import Image
 import tensorflow as tf
+from PIL import Image
+import numpy as np
+import cv2
 
 def main():
     model_path = "model\\model.h5"
