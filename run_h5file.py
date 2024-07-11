@@ -7,10 +7,13 @@ import cv2
 
 def run_h5(image_path: str) -> (float, str):
     print("--------------- INFERENCIA ---------------")
+    print(image_path)
     model_path = "model/model.h5"
     loaded_model = tf.keras.models.load_model(model_path)
+    print(loaded_model)
 
     image = cv2.imread(image_path)
+    print(image)
 
     image_fromarray = Image.fromarray(image, 'RGB')
     resize_image = image_fromarray.resize((224, 224))
