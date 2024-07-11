@@ -4,7 +4,7 @@ import numpy as np
 import cv2
 
 def main():
-    model_path = "model\\model.h5"
+    model_path = "model\model.h5"
     loaded_model = tf.keras.models.load_model(model_path)
 
     image = cv2.imread("img.png")
