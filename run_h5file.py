@@ -7,7 +7,7 @@ def main():
     model_path = "model/model.h5"
     loaded_model = tf.keras.models.load_model(model_path)
 
-    image = cv2.imread("img.png")
+    image = cv2.imread("tem.png")
 
     image_fromarray = Image.fromarray(image, 'RGB')
     resize_image = image_fromarray.resize((224, 224))
