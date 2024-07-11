@@ -36,7 +36,8 @@ def upload_file():
             
             for i in list_new_name_images:
                 print(f'downloads/{i}')
-                run_h5(i)
+                img = f'downloads/{i}'
+                run_h5(img)
                 print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
                 list_img_process.append(img_process)
                 
