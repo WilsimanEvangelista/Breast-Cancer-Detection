@@ -54,7 +54,7 @@ def download_specific_photos(service, folder_id, file_names, local_folder):
                 print(f"Baixando {item['name']}...")
                 sanitized_name = sanitize_filename(item['name'])
 
-                list_new_name_images.append(sanitize_filename)
+                list_new_name_images.append(sanitized_name)
                 
                 request = service.files().get_media(fileId=item['id'])
                 file_path = os.path.join(local_folder, sanitized_name)
