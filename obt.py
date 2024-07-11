@@ -35,15 +35,19 @@ def upload_file():
             
             for i in list_new_name_images:
                 pred, diag = run_h5(image_path=i)
+                img_process = generate_cam(image_path=i)
                 
                 list_img_process.append(img_process)
                 
                 if diag == "Tumor Maligno":
                     cancer += 1
                     pred_cancer += pred
+                    os.remove(i)
                 else:
                     n_cancer += 1
                     pred_n_cancer += pred
+                    os.remove(i)
+                
             
             if n_cancer > cancer:
                 diag_final = f'Tumor Benigno com {pred_n_cancer/n_cancer*100} de certeza.'

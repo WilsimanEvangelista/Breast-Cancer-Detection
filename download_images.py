@@ -78,4 +78,5 @@ def start_download_images(file_names: list):
     service = authenticate()
     list_new_name_images = download_specific_photos(service, folder_id, file_names, local_folder)
     print("Downloads concluídos!")
+    print(f'Lista de imagens: {list_new_name_images}')
     return list_new_name_images

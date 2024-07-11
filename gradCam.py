@@ -15,7 +15,8 @@ from pytorch_grad_cam.utils.image import (
 from pytorch_grad_cam.utils.model_targets import ClassifierOutputTarget
 
 
-def generate_cam(image_path, method='gradcam', device='cpu', aug_smooth=False, eigen_smooth=False, output_dir='uploads'):
+def generate_cam(image_path, method='gradcam', device='cpu', aug_smooth=False, eigen_smooth=False, output_dir='downloads'):
+    print("--------------- IMAGEM PROCESSADA ---------------")
     methods = {
         "gradcam": GradCAM,
         "hirescam": HiResCAM,

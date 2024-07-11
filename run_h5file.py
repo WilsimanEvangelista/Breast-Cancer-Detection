@@ -4,6 +4,7 @@ import numpy as np
 import cv2
 
 def run_h5(image_path: str) -> (float, str):
+    print("--------------- INFERENCIA ---------------")
     model_path = "model/model.h5"
     loaded_model = tf.keras.models.load_model(model_path)
 
@@ -17,6 +18,8 @@ def run_h5(image_path: str) -> (float, str):
 
     pred = loaded_model.predict(input_data)
     if pred >= 0.5:
+        print(pred, "Tumor Maligno")
         return pred, "Tumor Maligno"
     else:
+        print(pred, "Tumor Benigno")
         return pred, "Tumor Benigno"
