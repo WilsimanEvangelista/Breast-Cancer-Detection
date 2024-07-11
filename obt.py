@@ -14,6 +14,7 @@ def upload_file():
         a = request.values
         if a == 0:
             print("AAAAAAAAAAA")
+            
             return 0
         else:
             new_list_images = []
