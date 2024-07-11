@@ -3,11 +3,11 @@ from PIL import Image
 import numpy as np
 import cv2
 
-def main():
+def run_h5(image_path: str) -> (float, str):
     model_path = "model/model.h5"
     loaded_model = tf.keras.models.load_model(model_path)
 
-    image = cv2.imread("tem.png")
+    image = cv2.imread(image_path)
 
     image_fromarray = Image.fromarray(image, 'RGB')
     resize_image = image_fromarray.resize((224, 224))
@@ -17,9 +17,6 @@ def main():
 
     pred = loaded_model.predict(input_data)
     if pred >= 0.5:
-        print("Yes")
+        return pred, "Tumor Maligno"
     else:
-        print("No")
-        
-if __name__ == "__main__":
-    main()
+        return pred, "Tumor Benigno"
