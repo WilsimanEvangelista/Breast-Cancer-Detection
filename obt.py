@@ -35,7 +35,6 @@ def upload_file():
             
             for i in list_new_name_images:
                 pred, diag = run_h5(image_path=i)
-                img_process = generate_cam(image_path=i)
                 
                 list_img_process.append(img_process)
                 
