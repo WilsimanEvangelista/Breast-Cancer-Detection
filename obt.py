@@ -122,10 +122,10 @@ def upload_file():
 
             if n_cancer > cancer:
                 d = (pred_n_cancer/n_cancer*100)[0][0]
-                diag_final = f'Tumor Benigno com {d} de certeza.'
+                diag_final = f'Tumor Benigno com {d:.2f} de certeza.'
             else:
                 d = (pred_cancer/cancer*100)[0][0]
-                diag_final = f'Tumor Maligno com {d} de certeza.'
+                diag_final = f'Tumor Maligno com {d:.2f} de certeza.'
             
             print(diag_final)
             return "Ok", 200
