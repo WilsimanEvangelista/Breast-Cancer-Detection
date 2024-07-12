@@ -121,9 +121,11 @@ def upload_file():
                     os.remove(name_final)
 
             if n_cancer > cancer:
-                diag_final = f'Tumor Benigno com {pred_n_cancer/n_cancer*100} de certeza.'
+                d = (pred_n_cancer/n_cancer*100)[0][0]
+                diag_final = f'Tumor Benigno com {d} de certeza.'
             else:
-                diag_final = f'Tumor Maligno com {pred_cancer/cancer*100} de certeza.'
+                d = (pred_cancer/cancer*100)[0][0]
+                diag_final = f'Tumor Maligno com {d} de certeza.'
             
             print(diag_final)
             return "Ok", 200
