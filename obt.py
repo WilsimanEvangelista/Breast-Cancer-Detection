@@ -72,6 +72,8 @@ if __name__ == "__main__":
 
 from flask import Flask, request, jsonify
 from download_images import start_download_images
+import tensorflow as tf
+from run_h5file import *
 import json
 
 
@@ -85,6 +87,9 @@ def upload_file():
             print("AAAAAAAAAAA")
             return 0
         else:
+            model_path = "model/model.h5"
+            loaded_model = tf.keras.models.load_model(model_path)
+            
             new_list_images = []
 
             combinedMultiDict_To_Lists = list(a.lists())
@@ -94,7 +99,12 @@ def upload_file():
                 new_list_images.append(i.replace("\"","\'"))
             
             
-            start_download_images(file_names=new_list_images)
+            list_new_name_images = start_download_images(file_names=new_list_images)
+
+            for i in list_new_name_images:
+                name_final = f'downloads/{i}'
+                run_h5(name_final, loaded_model)
+
 
             return "Ok", 200
 

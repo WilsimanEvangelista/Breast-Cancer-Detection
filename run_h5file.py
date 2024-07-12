@@ -1,16 +1,12 @@
 import os
 #os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-import tensorflow as tf
 from PIL import Image
 import numpy as np
 import cv2
 
-def run_h5(image_path: str) -> (float, str):
+def run_h5(image_path: str, loaded_model) -> (float, str):
     print("--------------- INFERENCIA ---------------")
     print(image_path)
-    model_path = "model/model.h5"
-    loaded_model = tf.keras.models.load_model(model_path)
-    print(loaded_model)
 
     image = cv2.imread(image_path)
     print(image)
