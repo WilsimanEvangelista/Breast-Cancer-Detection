@@ -128,7 +128,7 @@ def upload_file():
                 diag_final = f'Tumor Maligno com {d:.2f} de certeza.'
             
             print(diag_final)
-            return "Ok", 200
+            return diag_final, 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 401
