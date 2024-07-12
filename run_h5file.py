@@ -9,7 +9,6 @@ def run_h5(image_path: str, loaded_model) -> (float, str):
     print(image_path)
 
     image = cv2.imread(image_path)
-    print(image)
 
     image_fromarray = Image.fromarray(image, 'RGB')
     resize_image = image_fromarray.resize((224, 224))

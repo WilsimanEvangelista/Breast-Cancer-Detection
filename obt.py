@@ -92,6 +92,12 @@ def upload_file():
             
             new_list_images = []
 
+            cancer = 0
+            pred_cancer = 0
+            n_cancer = 0
+            pred_n_cancer = 0
+            list_img_process = []
+
             combinedMultiDict_To_Lists = list(a.lists())
             list_Images = combinedMultiDict_To_Lists[0][0]
 
@@ -103,9 +109,23 @@ def upload_file():
 
             for i in list_new_name_images:
                 name_final = f'downloads/{i}'
-                run_h5(name_final, loaded_model)
+                pred, diag = run_h5(name_final, loaded_model)
+                
+                if diag == "Tumor Maligno":
+                    cancer += 1
+                    pred_cancer += pred
+                    os.remove(name_final)
+                else:
+                    n_cancer += 1
+                    pred_n_cancer += pred
+                    os.remove(name_final)
 
-
+            if n_cancer > cancer:
+                diag_final = f'Tumor Benigno com {pred_n_cancer/n_cancer*100} de certeza.'
+            else:
+                diag_final = f'Tumor Maligno com {pred_cancer/cancer*100} de certeza.'
+            
+            print(diag_final)
             return "Ok", 200
 
     except Exception as e:
