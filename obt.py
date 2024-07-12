@@ -1,10 +1,10 @@
+'''
 from flask import Flask, request, jsonify
 from download_images import start_download_images
 from upload_images import start_upload_images_to_drive
 import json
 from run_h5file import run_h5
 from gradCam import generate_cam
-
 
 app = Flask(__name__)
 
@@ -26,7 +26,7 @@ def upload_file():
                 new_list_images.append(i.replace("\"","\'"))
             
             list_new_name_images = start_download_images(file_names=new_list_images) # Faz download das imagens e retorna o nome das imagens de forma sanitizada
-            '''
+            
             img = 'downloads/tem.png'
             run_h5(img)
 
@@ -59,14 +59,47 @@ def upload_file():
                 diag_final = f'Tumor Benigno com {pred_n_cancer/n_cancer*100} de certeza.'
             else:
                 diag_final = f'Tumor Maligno com {pred_cancer/cancer*100} de certeza.'
-            '''
+            
             #start_upload_images_to_drive(list_img_process) # Faz upload das imagens processadas para o drive
 
-            return 200
+            return 'ok',200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 401
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000, debug=True)'''
+
+from flask import Flask, request, jsonify
+from download_images import start_download_images
+import json
+
+
+app = Flask(__name__)
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    try:
+        a = request.values
+        if a == 0:
+            print("AAAAAAAAAAA")
+            return 0
+        else:
+            new_list_images = []
+
+            combinedMultiDict_To_Lists = list(a.lists())
+            list_Images = combinedMultiDict_To_Lists[0][0]
+
+            for i in json.loads(list_Images):
+                new_list_images.append(i.replace("\"","\'"))
+            
+            
+            start_download_images(file_names=new_list_images)
+
+            return "Ok", 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 401
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
-
